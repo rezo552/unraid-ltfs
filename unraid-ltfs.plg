@@ -71,6 +71,7 @@ echo "Removing packages..."
 removepkg &name;-&version; >/dev/null
 
 # Remove possible leftovers
+rm -rf /usr/local/emhttp/plugins/&name;
 rm -rf /boot/config/plugins/&name;
 
 echo ""
