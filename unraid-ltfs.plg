@@ -1,0 +1,39 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+  <!ENTITY name      "unraid-ltfs">
+  <!ENTITY author    "rezo552">
+  <!ENTITY version   "2023.09.13">
+  <!ENTITY gitURL    "https://github.com/&author;/&name;/releases/download">
+  <!ENTITY pluginURL "https://raw.githubusercontent.com/&author;/&name;/master/&name;.plg">
+  <!ENTITY md5       "b68b4085c7180b65ab55d14ec6ad3c2f">
+  <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
+]>
+
+<PLUGIN  name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.10.0">
+
+<CHANGES>
+
+###2024.01.29
+- First LTFS version
+
+</CHANGES>
+
+<FILE Run="/bin/bash">
+<INLINE>
+rm -f $(ls /boot/config/plugins/&name;/unraid-ltfs*.txz 2>/dev/null|grep -v '&version;')
+</INLINE>
+</FILE>
+
+<FILE Name="/boot/config/plugins/&name;/unraid-ltfs-&version;.txz" Run="upgradepkg --install-new">
+<URL>&gitURL;/&version;/untaid-ltfs-&version;.txz</URL>
+<MD5>&md5;</MD5>
+</FILE>
+
+<FILE Name="&emhttp;/README.md">
+<INLINE>
+**LTFS**
+
+This plugin adds LTFS support to your unRAID server.
+</INLINE>
+</FILE>
+
