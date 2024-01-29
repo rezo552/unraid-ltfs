@@ -43,7 +43,7 @@ echo ""
 
 
   <FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new --reinstall">
-    <URL>https://raw.githubusercontent.com/rezo552/unraid-ltfs/raw/main/packages/&name;-&version;.txz</URL>
+    <URL>https://github.com/rezo552/unraid-ltfs/raw/main/packages/&name;-&version;.txz</URL>
   </FILE>
 
   <!--
