@@ -31,12 +31,15 @@ README.md
 **LTFS**
 
 This is adding support to mount, read and write LTFS tapes under Unraid. It is based on the reference implementation of LTFS which can be founded here: https://github.com/LinearTapeFileSystem/ltfs
-Please note that for the ltfsee_ordered_copy you need to have Python installed with the xattr module installed additionally.
+Please note that for the ltfsee_ordered_copy you need to have Python with the xattr module installed additionally.
 ]]>
 </INLINE>
 </FILE>
 
 
+<FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new --reinstall">
+<URL>https://github.com/rezo552/unraid-ltfs/raw/main/packages/&name;-&version;.txz</URL>
+</FILE>
 
 <!--
 The 'install' script.
@@ -52,11 +55,6 @@ echo " Version: &version;"
 echo "-----------------------------------------------------------"
 echo ""
 </INLINE>
-</FILE>
-
-
-<FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new --reinstall">
-<URL>https://github.com/rezo552/unraid-ltfs/raw/main/packages/&name;-&version;.txz</URL>
 </FILE>
 
 <!--
