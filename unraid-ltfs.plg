@@ -8,28 +8,27 @@
 ]>
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
 
-  <CHANGES>
+<CHANGES>
 ##&name;
 ###2024.01.29
 - First version
 
-  </CHANGES>
+</CHANGES>
 
-  <FILE Run="/bin/bash">
-    <INLINE>
+<FILE Run="/bin/bash">
+<INLINE>
 # Remove old 'source' files
 rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2&gt;/dev/null | grep -v '&version;')
-    </INLINE>
-  </FILE>
+</INLINE>
+</FILE>
 
 
 
-  <!--
+<!--
 The 'install' script.
 -->
-  <FILE Run="/bin/bash" Method="install">
-    <INLINE>
-
+<FILE Run="/bin/bash" Method="install">
+<INLINE>
 echo ""
 echo "-----------------------------------------------------------"
 echo " &name; has been installed."
@@ -38,22 +37,35 @@ echo " Copyright 2024, &author;"
 echo " Version: &version;"
 echo "-----------------------------------------------------------"
 echo ""
-    </INLINE>
-  </FILE>
+</INLINE>
+</FILE>
 
 
-  <FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new --reinstall">
-    <URL>https://github.com/rezo552/unraid-ltfs/raw/main/packages/&name;-&version;.txz</URL>
-  </FILE>
+<FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new --reinstall">
+<URL>https://github.com/rezo552/unraid-ltfs/raw/main/packages/&name;-&version;.txz</URL>
+</FILE>
 
-  <!--
+<!--
 The 'remove' script.
 -->
-  <FILE Run="/bin/bash" Method="remove">
-    <INLINE>
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
 
+echo "Removing packages..."
 
-    </INLINE>
-  </FILE>
+# Remove all installed packages.
+removepkg &name;-&version; >/dev/null
+
+# Remove possible leftovers
+rm -rf /boot/config/plugins/&name;
+
+echo ""
+echo "-----------------------------------------------------------"
+echo " &name; has been uninstalled."
+echo "-----------------------------------------------------------"
+echo ""
+
+</INLINE>
+</FILE>
 
 </PLUGIN>
