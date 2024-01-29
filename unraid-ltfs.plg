@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
   <!ENTITY name      "unraid-ltfs">
   <!ENTITY author    "rezo552">
-  <!ENTITY version   "2023.09.13">
+  <!ENTITY version   "2024.01.29">
   <!ENTITY gitURL    "https://github.com/&author;/&name;/releases/download">
   <!ENTITY pluginURL "https://raw.githubusercontent.com/&author;/&name;/master/&name;.plg">
   <!ENTITY md5       "b68b4085c7180b65ab55d14ec6ad3c2f">
