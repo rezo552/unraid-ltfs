@@ -1,65 +1,59 @@
-<?xml version='1.0' standalone='yes'?>
+<?xml version="1.0" standalone="yes"?>
 <!DOCTYPE PLUGIN [
-  <!ENTITY name      "unraid-ltfs">
-  <!ENTITY author    "rezo552">
-  <!ENTITY version   "1.0">
-  <!ENTITY gitURL    "https://github.com/&author;/&name;/releases/download">
-  <!ENTITY pluginURL "https://raw.githubusercontent.com/&author;/&name;/master/&name;.plg">
-  <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
+<!ENTITY name "unraid-ltfs">
+<!ENTITY launch	"">
+<!ENTITY author "rezo552">
+<!ENTITY version "1.0">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/rezo552/blob/main/unraid-ltfs.plg">
 ]>
+<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
 
-<PLUGIN  name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.10.0">
-
-<CHANGES>
-
+  <CHANGES>
+##&name;
 ###2024.01.29
-- First LTFS version
+- First version
 
-</CHANGES>
+  </CHANGES>
 
-<FILE Run="/bin/bash">
-<INLINE>
-rm -f $(ls /boot/config/plugins/&name;/unraid-ltfs*.txz 2>/dev/null|grep -v '&version;')
-</INLINE>
-</FILE>
+  <FILE Run="/bin/bash">
+    <INLINE>
+# Remove old 'source' files
+rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2&gt;/dev/null | grep -v '&version;')
+    </INLINE>
+  </FILE>
 
-<FILE Name="/boot/config/plugins/&name;/unraid-ltfs-&version;.txz" Run="upgradepkg --install-new">
-<URL>&gitURL;/&version;/untaid-ltfs-&version;.txz</URL>
-</FILE>
 
-<FILE Name="&emhttp;/README.md">
-<INLINE>
-**LTFS**
 
-This plugin adds LTFS support to your unRAID server.
-</INLINE>
-</FILE>
+  <!--
+The 'install' script.
+-->
+  <FILE Run="/bin/bash" Method="install">
+    <INLINE>
 
-<FILE Run="/bin/bash">
-<INLINE>
+echo ""
+echo "-----------------------------------------------------------"
+echo " &name; has been installed."
+echo ""
+echo " Copyright 2024, &author;"
+echo " Version: &version;"
+echo "-----------------------------------------------------------"
+echo ""
+    </INLINE>
+  </FILE>
 
-echo "----- Installing----"
 
-</INLINE>
-</FILE>
+  <FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new --reinstall">
+    <URL>https://raw.githubusercontent.com/rezo552/unraid-ltfs/blob/main/packages/&name;-&version;.txz</URL>
+  </FILE>
 
-<FILE Run="/bin/bash" Method="remove">
-<INLINE>
+  <!--
+The 'remove' script.
+-->
+  <FILE Run="/bin/bash" Method="remove">
+    <INLINE>
 
-echo "----------------------------------------"
-echo "---Uninstalling LTFS---"
-echo "----------------------------------------"
-# Remove plugin related files
-removepkg &name;-&version; >/dev/null 2>&amp;1
-rm -rf &emhttp;
-rm -rf &plugin;
-echo
-echo "----------------------------------------------------------------------------"
-echo "--------LTFS uninstalled, please reboot your server!----------"
-echo "----------------------------------------------------------------------------"
-echo
 
-</INLINE>
-</FILE>
+    </INLINE>
+  </FILE>
 
 </PLUGIN>
