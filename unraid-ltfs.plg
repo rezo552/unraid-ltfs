@@ -3,7 +3,7 @@
 <!ENTITY name "unraid-ltfs">
 <!ENTITY launch	"">
 <!ENTITY author "rezo552">
-<!ENTITY version "1.0">
+<!ENTITY version "1.1">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/rezo552/unraid-ltfs/main/unraid-ltfs.plg">
 ]>
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
@@ -19,6 +19,20 @@
 <INLINE>
 # Remove old 'source' files
 rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2&gt;/dev/null | grep -v '&version;')
+</INLINE>
+</FILE>
+
+<!--
+README.md
+-->
+<FILE Name="/usr/local/emhttp/plugins/&name;/README.md">
+<INLINE>
+<![CDATA[
+**LTFS**
+
+This is adding support to mount, read and write LTFS tapes under Unraid. It is based on the reference implementation of LTFS which can be founded here: https://github.com/LinearTapeFileSystem/ltfs
+Please note that for the ltfsee_ordered_copy you need to have Python installed with the xattr module installed additionally.
+]]>
 </INLINE>
 </FILE>
 
