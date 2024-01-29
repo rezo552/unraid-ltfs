@@ -1,0 +1,59 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE PLUGIN [
+<!ENTITY name "unraid-ltfs">
+<!ENTITY launch	"">
+<!ENTITY author "rezo552">
+<!ENTITY version "1.0">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/rezo552/unraid-ltfs/main/unraid-ltfs.plg">
+]>
+<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
+
+  <CHANGES>
+##&name;
+###2024.01.29
+- First version
+
+  </CHANGES>
+
+  <FILE Run="/bin/bash">
+    <INLINE>
+# Remove old 'source' files
+rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2&gt;/dev/null | grep -v '&version;')
+    </INLINE>
+  </FILE>
+
+
+
+  <!--
+The 'install' script.
+-->
+  <FILE Run="/bin/bash" Method="install">
+    <INLINE>
+
+echo ""
+echo "-----------------------------------------------------------"
+echo " &name; has been installed."
+echo ""
+echo " Copyright 2024, &author;"
+echo " Version: &version;"
+echo "-----------------------------------------------------------"
+echo ""
+    </INLINE>
+  </FILE>
+
+
+  <FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new --reinstall">
+    <URL>https://raw.githubusercontent.com/rezo552/unraid-ltfs/raw/main/packages/&name;-&version;.txz</URL>
+  </FILE>
+
+  <!--
+The 'remove' script.
+-->
+  <FILE Run="/bin/bash" Method="remove">
+    <INLINE>
+
+
+    </INLINE>
+  </FILE>
+
+</PLUGIN>
