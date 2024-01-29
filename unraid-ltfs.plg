@@ -4,7 +4,7 @@
 <!ENTITY launch	"">
 <!ENTITY author "rezo552">
 <!ENTITY version "1.0">
-<!ENTITY pluginURL "https://raw.githubusercontent.com/rezo552/blob/main/unraid-ltfs.plg">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/rezo552/unraid-ltfs/main/unraid-ltfs.plg">
 ]>
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
 
