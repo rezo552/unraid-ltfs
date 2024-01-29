@@ -35,4 +35,31 @@ This plugin adds LTFS support to your unRAID server.
 </INLINE>
 </FILE>
 
+<FILE Run="/bin/bash">
+<INLINE>
+
+echo "----- Installing----"
+
+</INLINE>
+</FILE>
+
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+
+echo "----------------------------------------"
+echo "---Uninstalling LTFS---"
+echo "----------------------------------------"
+# Remove plugin related files
+removepkg &name;-&version; >/dev/null 2>&amp;1
+rm -rf &emhttp;
+rm -rf &plugin;
+echo
+echo "----------------------------------------------------------------------------"
+echo "--------LTFS uninstalled, please reboot your server!----------"
+echo "----------------------------------------------------------------------------"
+echo
+
+</INLINE>
+</FILE>
+
 </PLUGIN>
