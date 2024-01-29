@@ -47,12 +47,10 @@ echo ""
   </FILE>
 
   <!--
-The 'remove' script.
+The 'remove' script. Why it is not updating?
 -->
   <FILE Run="/bin/bash" Method="remove">
     <INLINE>
-
-
     </INLINE>
   </FILE>
 
