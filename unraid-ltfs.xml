@@ -9,6 +9,6 @@
 This plugin adds support for LTFS. You can easily mount tape drives in Unraid.
 </Description>
 <Support>https://forums.unraid.net/topic/98167-lto-tape-experience/</Support>
-<Icon>https://github.com/rezo552/unraid-ltfs/blob/main/LTFS.png?raw=true</Icon>
+<Icon>https://raw.githubusercontent.com/rezo552/unraid-ltfs/main/LTFS.png</Icon>
 <IconFA>refresh</IconFA>
 </Containers>
