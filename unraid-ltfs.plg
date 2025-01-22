@@ -3,7 +3,7 @@
 <!ENTITY name "unraid-ltfs">
 <!ENTITY launch	"">
 <!ENTITY author "rezo552">
-<!ENTITY version "2024.01.29">
+<!ENTITY version "2025.01.21">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/rezo552/unraid-ltfs/main/unraid-ltfs.plg">
 ]>
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
@@ -12,6 +12,8 @@
 ##&name;
 ###2024.01.29
 - First version
+###2025.01.21
+- Breaking change: Recompiled for OpenSSL 3.4 in order to comply with Unraid 7. Unraid 6 is no longer supported the txz file (2024.01.29) is still available in the Github repo for manual installations.
 
 </CHANGES>
 
