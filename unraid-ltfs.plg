@@ -3,7 +3,7 @@
 <!ENTITY name "unraid-ltfs">
 <!ENTITY launch	"">
 <!ENTITY author "rezo552">
-<!ENTITY version "2025.01.21">
+<!ENTITY version "2025.01.22">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/rezo552/unraid-ltfs/main/unraid-ltfs.plg">
 ]>
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
