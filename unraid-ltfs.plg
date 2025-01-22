@@ -3,7 +3,7 @@
 <!ENTITY name "unraid-ltfs">
 <!ENTITY launch	"">
 <!ENTITY author "rezo552">
-<!ENTITY version "2025.01.21">
+<!ENTITY version "2025.01.22">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/rezo552/unraid-ltfs/main/unraid-ltfs.plg">
 ]>
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
@@ -14,13 +14,23 @@
 - First version
 ###2025.01.21
 - Breaking change: Recompiled for OpenSSL 3.4 in order to comply with Unraid 7. Unraid 6 is no longer supported the txz file (2024.01.29) is still available in the Github repo for manual installations.
+###2025.01.22
+- Ensure backwards compatibility for Unraid versions prior 7.0.0
+- Ensure that icon shows up on Plugin page
 
 </CHANGES>
 
-<FILE Run="/bin/bash">
+<FILE Run="/bin/bash" Min="6.13.0">
 <INLINE>
 # Remove old 'source' files
 rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2&gt;/dev/null | grep -v '&version;')
+</INLINE>
+</FILE>
+
+<FILE Run="/bin/bash" Max="6.12.99">
+<INLINE>
+# Remove old 'source' files
+rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2&gt;/dev/null | grep -v '2024.01.29')
 </INLINE>
 </FILE>
 
@@ -39,8 +49,12 @@ Please note that for the ltfsee_ordered_copy you need to have Python with the xa
 </FILE>
 
 
-<FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new --reinstall">
+<FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new --reinstall" Min="6.13.0">
 <URL>https://github.com/rezo552/unraid-ltfs/raw/main/packages/&name;-&version;.txz</URL>
+</FILE>
+
+<FILE Name="/boot/config/plugins/&name;/unraid-ltfs-2024.01.29.txz" Run="upgradepkg --install-new --reinstall" Max="6.12.99">
+<URL>https://github.com/rezo552/unraid-ltfs/raw/main/packages/unraid-ltfs-2024.01.29.txz</URL>
 </FILE>
 
 <!--
@@ -48,6 +62,20 @@ The 'install' script.
 -->
 <FILE Run="/bin/bash" Method="install">
 <INLINE>
+
+# Check if plugin icon is avaliable
+if [ ! -f /boot/config/plugins/&name;/&name;.png ]; then
+  wget -q -O /boot/config/plugins/&name;/&name;.png "https://raw.githubusercontent.com/rezo552/unraid-ltfs/refs/heads/main/LTFS.png"
+fi
+
+# Install icon
+if [ ! -f /usr/local/emhttp/plugins/&name;/images/&name;.png ]; then
+  if [ ! -d /usr/local/emhttp/plugins/&name;/images ]; then
+    mkdir -p /usr/local/emhttp/plugins/&name;/images
+  fi
+  cp /boot/config/plugins/&name;/&name;.png /usr/local/emhttp/plugins/&name;/images/&name;.png
+fi
+
 echo ""
 echo "-----------------------------------------------------------"
 echo " &name; has been installed."
