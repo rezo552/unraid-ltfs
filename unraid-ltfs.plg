@@ -51,10 +51,12 @@ Please note that for the ltfsee_ordered_copy you need to have Python with the xa
 
 <FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new --reinstall" Min="6.13.0">
 <URL>https://github.com/rezo552/unraid-ltfs/raw/main/packages/&name;-&version;.txz</URL>
+<SHA256>f144c3712c91b012ce5e7bbfa3f202605ef81713d8a73d7a80b119ba9dd4f3ae</SHA256>
 </FILE>
 
 <FILE Name="/boot/config/plugins/&name;/unraid-ltfs-2024.01.29.txz" Run="upgradepkg --install-new --reinstall" Max="6.12.99">
 <URL>https://github.com/rezo552/unraid-ltfs/raw/main/packages/unraid-ltfs-2024.01.29.txz</URL>
+<SHA256>226cf3145badfe392b4c0bbf5a5551f399c2c7c3ac875ea6a6988aa3b249ccb5</SHA256>
 </FILE>
 
 <!--
